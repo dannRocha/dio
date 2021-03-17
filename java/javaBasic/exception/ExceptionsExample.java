@@ -8,8 +8,11 @@ class ExceptionsExample {
       if(yearOld < 18) {
           throw new IllegalYearOlds("Error: YearOld:'" + yearOld + "' < 18");
       }
+      if(yearOld > 24) {
+          throw new IllegalYear("Error: YearOld: " + yearOld + " > 24");
+      }
     }
-    catch(IllegalYearOlds e) {
+    catch(IllegalYear | IllegalYearOlds e) {
       e.printStackTrace();
     }
     catch(Throwable e) {
@@ -24,6 +27,15 @@ class IllegalYearOlds extends Exception {
   }
   public IllegalYearOlds(String message, Throwable cause) {
     super(message, cause);
+  }
+}
+
+class IllegalYear extends Exception {
+  public IllegalYear(String msg) {
+    super(msg); 
+  }
+  public IllegalYear(String msg, Throwable cause) {
+    super(msg,  cause);
   }
 }
 
