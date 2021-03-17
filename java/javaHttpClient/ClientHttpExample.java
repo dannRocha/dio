@@ -56,7 +56,8 @@ public class ClientHttpExample {
     var address = "https://http2.akamai.com/demo/h2_demo_frame.html";
     var httpClient = HttpClient
       .newBuilder()
-      .version(Version.HTTP_1_1)
+      // .version(Version.HTTP_1_1)
+      .version(Version.HTTP_2)
       .proxy(ProxySelector.getDefault())
       .build();
 
