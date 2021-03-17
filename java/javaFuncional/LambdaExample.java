@@ -5,7 +5,8 @@ package dio.javaFuncional;
 public class LambdaExample {
 	public static void main(String[] args) {
 
-		Funcao<String> preFixo = valor -> " >>> " + valor;
+		// Funcao<String> preFixo = valor -> " >>> " + valor;
+		Funcao<String> preFixo = (var valor) -> " >>> " + valor;
 
 		println(preFixo.formatar("Lambda"));
 		println("Booleano: 1: " + preFixo.trueOrFalse(1));
