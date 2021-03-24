@@ -1,0 +1,19 @@
+# pro e dev - são sufixos dos arquivos de configuração
+# application-dev.properties -> dev
+# application-pro.properties -> pro
+# application-any.properties -> any
+
+# Usando o application.properties
+# spring.profiles.active=pro
+# 
+# spring.application.name=Configuacao do Projto em Spring Boot
+# server.port=9090
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: Configuacao do Projeto em Spring Boot
+
+server:
+  port: 9090
