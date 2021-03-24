@@ -12,6 +12,6 @@ public class HelloController {
   @GetMapping("/")
   public String helloMessage() {
     return "<h1> Ambiente: [" + ambiente + "]</h1>"+
-      "<h2>Title: Començando no Spring Boot [<a href='/config'>Config</a>]</h2>";
+      "<h2>Title: Començando no Spring Boot [<a href='/config'>Config</a>, <a href='/env'>Environment</a>]</h2>";
   }  
 }
