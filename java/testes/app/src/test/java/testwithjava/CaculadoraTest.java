@@ -1,8 +1,9 @@
 package testwithjava;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class CaculadoraTest {
@@ -13,5 +14,16 @@ public class CaculadoraTest {
     int result = calc.somar(2, 2);
     int expect = 4;
     assertEquals(expect, result);
+  }
+
+  @Test
+  public void testarSomarComMock() {
+    Calculadora calc = mock(Calculadora.class);
+
+	// Forçar resposta
+    when(calc.somar(1, 2)).thenReturn(3);
+    
+    var resultado = calc.somar(1, 2);
+    assertEquals(3, resultado);
   }
 }
