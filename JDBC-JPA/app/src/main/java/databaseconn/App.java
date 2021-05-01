@@ -4,10 +4,23 @@
 package databaseconn;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class App {
     public static void main(String[] args) {
-        Connection s;
+        
+       String urlConnection = "jdbc:postgresql://localhost/financas";
+       String userDB = "jdbcexemplo";
+       String passwordDB = "1234";
+       
+       try (Connection conn = DriverManager.getConnection(urlConnection, userDB, passwordDB)){
+           System.out.println("Connected: " + userDB + " - " + conn);
+       }
+       catch(SQLException e) {
+           e.printStackTrace();
+       }
+       
     }
 }
