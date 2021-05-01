@@ -9,18 +9,28 @@ import java.sql.SQLException;
 
 
 public class App {
+	
     public static void main(String[] args) {
         
-       String urlConnection = "jdbc:postgresql://localhost/financas";
+       // String urlConnection = "jdbc:postgresql://localhost/financas";
        String userDB = "jdbcexemplo";
        String passwordDB = "1234";
        
-       try (Connection conn = DriverManager.getConnection(urlConnection, userDB, passwordDB)){
+       try (Connection conn = DriverManager.getConnection(urlConnection(), userDB, passwordDB)){
            System.out.println("Connected: " + userDB + " - " + conn);
        }
        catch(SQLException e) {
            e.printStackTrace();
        }
-       
     }
+
+    public static String urlConnection() {
+
+		String protocol = "jdbc";
+		String driver = "postgresql";
+		String address = "localhost";
+		String database = "financas";
+
+		return protocol + ":" + driver + "://" + address + "/" + database;
+	}
 }
