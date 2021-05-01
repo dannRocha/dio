@@ -1,13 +1,12 @@
 -- Criar um grupo/papel com N permisões (por padrão as não há permissões)
-create role teacher nocreatedb nocreaterole inherit nologin nobypassrls connection limit 10;
+CREATE ROLE teacher NOCREATEDB NOCREATEROLE INHERIT NOLOGIN NOBYPASSRLS CONNECTION LIMIT 10;
 -- Criar um grupo/papel com permissões de login
-create role daniel login password '123';
+CREATE ROLE daniel LOGIN PASSWORD '123';
 -- Remove a role daniel;
-drop role daniel;
+DROP ROLE daniel;
 -- Recriar a role daniel, mas como um membro da role teacher
-create role daniel login password '123' in role teacher;
+CREATE ROLE daniel LOGIN PASSWORD '123' IN ROLE teacher;
 -- Remove daniel do role teacher
-revoke teacher from daniel;
+REVOKE teacher FROM daniel;
 -- Adiciona daniel do role teacher
-grant teacher to daniel;
-
+GRANT teacher TO daniel;
