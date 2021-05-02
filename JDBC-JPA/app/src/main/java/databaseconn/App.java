@@ -3,17 +3,16 @@
  */
 package databaseconn;
 
+import databaseconn.dao.ClientDAO;
 import java.sql.Connection;
 
 
 public class App {
 	
     public static void main(String[] args) {
-      try {
-        Connection conn = ConnectionFactory.getConnection();
-      }
-      catch(Exception e) {
-        e.printStackTrace();
-      }
+
+      ClientDAO client = new ClientDAO();
+      ClientDAO.showTable(client.listAll());
+      
     }
 }
