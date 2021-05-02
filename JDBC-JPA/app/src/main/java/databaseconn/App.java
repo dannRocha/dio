@@ -3,16 +3,51 @@
  */
 package databaseconn;
 
-import databaseconn.dao.ClientDAO;
-import java.sql.Connection;
 
+import databaseconn.dao.ClientDAO;
+import databaseconn.entity.Client;
+
+
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
 	
     public static void main(String[] args) {
 
       ClientDAO client = new ClientDAO();
+      
+      /*list All*/
+      System.out.println("[listAll]");
       ClientDAO.showTable(client.listAll());
+
+      /*findById*/
+      System.out.println("\n[findById]");
+      var clientId = client.findById(2);
+      if(clientId != null) {
+        ClientDAO.showTable(List.of(clientId));  
+      }
+
+      /*insertOne*/
+      System.out.println("\n[insertOne]");
+      client.insertOne(new Client(
+        "Daniel Rocha Rocha", "rocharochadaniel@rocha.com"
+      ));
+
+      int IDUser = 501;
+      /*updateOne*/
+      if(client.findById(IDUser) != null) {
+        client.updateOne(IDUser, new Client(
+          "Daniel Silva Silva", "silvasilvadaniel@rocha.com.br"
+        ));
+      }
+
+      /*deleteOne*/
+      if(client.findById(IDUser) != null) {
+        client.deleteOne(IDUser);
+      }
       
     }
 }
