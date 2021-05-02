@@ -10,6 +10,12 @@ public class Client {
   private LocalDate date;
 
   public Client() {}
+  
+  public Client(String name, String email) {
+    setName(name);
+    setEmail(email);
+  }
+
   public Client(String name, String email, Boolean enable, LocalDate date) {
     setName(name);
     setEmail(email);
