@@ -22,6 +22,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:29.0-jre")
+    implementation("org.postgresql:postgresql:42.2.20")
+    implementation("javax.persistence:javax.persistence-api:2.2")
+    
 }
 
 application {
