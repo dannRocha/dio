@@ -33,7 +33,7 @@ public class Client {
 
   @Temporal(TemporalType.TIMESTAMP)
   @Column(name="data_criacao", nullable = false)
-  private Date date;
+  private Date createAt;
 
   public Client(){}
   
@@ -41,11 +41,11 @@ public class Client {
     setName(name);
     setEmail(email);
     setEnable(false);
-    setDate(
+    setCreateAt(
       Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())
     );
 
-    setDate(
+    setCreateAt(
       Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())
     );
   }
@@ -54,7 +54,7 @@ public class Client {
     setName(name);
     setEmail(email);
     setEnable(enable);
-    setDate(
+    setCreateAt(
       Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())
     );
   }
@@ -75,8 +75,8 @@ public class Client {
     return enable;
   }
 
-  public Date getDate() {
-    return date;
+  public Date getCreateAt() {
+    return createAt;
   }
 
   public void setName(String name) {
@@ -91,7 +91,7 @@ public class Client {
     this.enable = enable;
   }
 
-  public void setDate(Date date) {
-    this.date = date;
+  public void setCreateAt(Date createAt) {
+    this.createAt = createAt;
   }
 }
