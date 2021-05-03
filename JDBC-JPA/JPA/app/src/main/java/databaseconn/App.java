@@ -10,6 +10,7 @@ import javax.persistence.EntityManager ;
 import javax.persistence.Persistence;
 
 import java.util.Optional;
+import java.util.List;
 
 
 public class App {
@@ -43,9 +44,10 @@ public class App {
 
     public static void findExample() {
       
+      // Example 1
       // Client client = entityManager.find(Client.class, 502L);
       Optional<Client> optionalClient = Optional.ofNullable(
-        entityManager.find(Client.class, 502L)
+        entityManager.find(Client.class, 512L)
       );
 
       if(optionalClient.isEmpty()) return;
@@ -59,13 +61,35 @@ public class App {
       System.out.println("  ENABLE   : " + client.getEnable());
       System.out.println("  CREATE AT: " + client.getCreateAt());
       System.out.println("---------------------------------------");
+
+
+      // Example 2
+      var query1 = "SELECT * FROM cliente WHERE nome = :name";
+      Client client1 = (Client) entityManager
+        .createNativeQuery(query1, Client.class)
+        .setParameter("name", "Otávio Regueira")
+        .getSingleResult();
+
+      System.out.println("NAME: " + client1.getName());
+
+
+      // Example 3
+      var query2 = "SELECT * FROM cliente";
+      List<Client> clients = entityManager
+        .createNativeQuery(query2, Client.class)
+        .getResultList();
+      
+      clients.forEach(c -> 
+        System.out.println(String.format("[%d] %s", c.getId(), c.getName()))
+      );
+      
     }
 
 
     public static void updateExample() {
 
       Optional<Client> optionalClient = Optional.ofNullable(
-        entityManager.find(Client.class, 502L)
+        entityManager.find(Client.class, 512L)
       );
 
       if(optionalClient.isEmpty()) return;
@@ -83,7 +107,7 @@ public class App {
     public static void removeExample() { 
 
       Optional<Client> optionalClient = Optional.ofNullable(
-        entityManager.find(Client.class, 502L)
+        entityManager.find(Client.class, 512L)
       );
 
       if(optionalClient.isEmpty()) return;
