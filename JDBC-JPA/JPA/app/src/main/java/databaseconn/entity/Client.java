@@ -6,7 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
-import java.sql.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 @Entity
 @Table(name="cliente")
@@ -26,20 +31,32 @@ public class Client {
   @Column(name="ativo")
   private Boolean enable;
 
-  @Column(name="data_criacao")
+  @Temporal(TemporalType.DATE)
+  @Column(name="data_criacao", nullable = false)
   private Date date;
 
   public Client(){}
   
   public Client(String name, String email) {
     setName(name);
-    setName(email);
+    setEmail(email);
+    setEnable(false);
+    setDate(
+      Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())
+    );
+
+    setDate(
+      Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())
+    );
   }
 
   public Client(String name, String email, Boolean enable) {
     setName(name);
-    setName(email);
+    setEmail(email);
     setEnable(enable);
+    setDate(
+      Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())
+    );
   }
 
   public String getName() {
