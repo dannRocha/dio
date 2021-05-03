@@ -21,9 +21,10 @@ dependencies {
     testImplementation("junit:junit:4.13")
 
     // This dependency is used by the application.
+    // implementation("javax.persistence:javax.persistence-api:2.2") // Não necessario porque, a implementação(hibernate) já contém
     implementation("com.google.guava:guava:29.0-jre")
     implementation("org.postgresql:postgresql:42.2.20")
-    implementation("javax.persistence:javax.persistence-api:2.2")
+    implementation("org.hibernate:hibernate-core:5.4.31.Final")
     
 }
 
