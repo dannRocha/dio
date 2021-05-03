@@ -29,6 +29,19 @@ public class Client {
   @Column(name="data_criacao")
   private Date date;
 
+  public Client(){}
+  
+  public Client(String name, String email) {
+    setName(name);
+    setName(email);
+  }
+
+  public Client(String name, String email, Boolean enable) {
+    setName(name);
+    setName(email);
+    setEnable(enable);
+  }
+
   public String getName() {
     return name;
   }
