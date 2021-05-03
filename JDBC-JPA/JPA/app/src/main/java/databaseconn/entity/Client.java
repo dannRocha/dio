@@ -25,10 +25,10 @@ public class Client {
   @Column(name="nome", nullable = false)
   private String name;
 
-  @Column
+  @Column(name="email", nullable = false)
   private String email;
 
-  @Column(name="ativo")
+  @Column(name="ativo", nullable = false)
   private Boolean enable;
 
   @Temporal(TemporalType.DATE)
