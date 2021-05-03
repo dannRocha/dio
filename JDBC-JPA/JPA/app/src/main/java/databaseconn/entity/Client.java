@@ -20,7 +20,7 @@ public class Client {
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   @Column(name="numero")
-  private Integer id;
+  private Long id;
 
   @Column(name="nome", nullable = false)
   private String name;
@@ -31,7 +31,7 @@ public class Client {
   @Column(name="ativo", nullable = false)
   private Boolean enable;
 
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   @Column(name="data_criacao", nullable = false)
   private Date date;
 
@@ -57,6 +57,10 @@ public class Client {
     setDate(
       Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())
     );
+  }
+
+  public Long getId() {
+    return id;
   }
 
   public String getName() {

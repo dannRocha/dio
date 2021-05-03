@@ -6,7 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
-import java.sql.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import java.util.Date;
+import java.math.BigInteger;
+
 
 
 @Entity
@@ -15,30 +20,31 @@ public class Transaction {
 
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
 
   @Column(name="banco_numero", nullable = false)
   private Integer bankNumber;
 
   @Column(name="conta_corrente_numero", nullable = false)
-  private Integer ccNumber;
+  private Long ccNumber;
 
   @Column(name="conta_corrente_digito", nullable = false)
-  private Integer ccDigit;
+  private Short ccDigit;
 
   @Column(name="cliente_numero", nullable = false)
-  private Integer clientNumber;
+  private Long clientNumber;
 
   @Column(name="tipo_transacao_id", nullable = false)
-  private Integer typeTransaction;
+  private Short typeTransaction;
 
   @Column(name="valor", nullable = false)
-  private Double value;
+  private BigInteger value;
 
+  @Temporal(TemporalType.TIMESTAMP)
   @Column(name="data_criacao", nullable = false)
   private Date createAt;
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -46,23 +52,23 @@ public class Transaction {
     return bankNumber;
   }
 
-  public Integer getCCNumber() {
+  public Long getCCNumber() {
     return ccNumber;
   }
 
-  public Integer getCCDigit() {
+  public Short getCCDigit() {
     return ccDigit;
   }
 
-  public Integer getClientNumber() {
+  public Long getClientNumber() {
     return clientNumber;
   }
 
-  public Integer getTypeTransaction() {
+  public Short getTypeTransaction() {
     return typeTransaction;
   }
 
-  public Double getValue() {
+  public BigInteger getValue() {
     return value;
   }
 
@@ -75,23 +81,23 @@ public class Transaction {
     this.bankNumber = bankNumber;
   }
 
-  public void setCCNumber(Integer ccNumber) {
+  public void setCCNumber(Long ccNumber) {
     this.ccNumber = ccNumber;
   }
 
-  public void setCCDigit(Integer ccDigit) {
+  public void setCCDigit(Short ccDigit) {
     this.ccDigit = ccDigit;
   }
 
-  public void setClientNumber(Integer clientNumber) {
+  public void setClientNumber(Long clientNumber) {
     this.clientNumber = clientNumber;
   }
 
-  public void setTypeTransaction(Integer typeTransaction) {
+  public void setTypeTransaction(Short typeTransaction) {
     this.typeTransaction = typeTransaction;
   }
 
-  public void setValue(Double value) {
+  public void setValue(BigInteger value) {
     this.value = value;
   }
 
