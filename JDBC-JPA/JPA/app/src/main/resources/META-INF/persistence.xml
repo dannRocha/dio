@@ -6,7 +6,7 @@
   version="2.1"
 >
 
-    <persistence-unit name="PERSISTENCE_EXAMPLE" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="financas" transaction-type="RESOURCE_LOCAL">
       
       <description> Exemplo de arquivo de configuração de persistence.xml </description>
       
