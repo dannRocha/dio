@@ -10,6 +10,9 @@
       
       <description> Exemplo de arquivo de configuração de persistence.xml </description>
       
+
+      <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
       <class>databaseconn.entity.Client</class>
       <class>databaseconn.entity.Transaction</class>
 
@@ -17,7 +20,22 @@
         <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
         <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/financas" />
         <property name="javax.persistence.jdbc.user" value="jdbcexemplo" />
-        <property name="javax.persistence.jdbc.password" value="1234" />  
+        <property name="javax.persistence.jdbc.password" value="1234" />
+
+
+        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+        <property name="hibernate.show_sql" value="true"/>
+        <property name="hibernate.format_sql" value="true"/>
+        <!--
+        <property name="hibernate.hbm2ddl.auto" value="validate"/>
+         <property name="hibernate.hbm2ddl.auto" value="create"/> Comandos DDL 
+          Possiveis valores para hibernate.hbm2ddl.auto: create, create-drop, validate, update
+            create: Cria nova tabela
+            create-drop: Cria nova tabela e remove quando a aplicação é fechada
+            validate: Validas os campos, se os campos estão de acordo com o banco de dados;
+            update: Cria novos campos se necessário
+        --> 
+
       </properties>
 
     </persistence-unit>
