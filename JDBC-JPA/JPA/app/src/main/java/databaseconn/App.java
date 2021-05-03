@@ -3,12 +3,27 @@
  */
 package databaseconn;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager ;
+import javax.persistence.Persistence;
+
+import databaseconn.entity.Client;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+      // Criar o gerenciador de entidades
+      EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("financas");
+      EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+      var client = new Client("Daniel Rocha Rocha", "danielrocharocha@rocha.com.br");
+
+      entityManager.getTransaction().begin();  // Inicia a transação no banco de dados;
+      entityManager.persist(client);           // Persiste dados no banco de dados;
+      entityManager.getTransaction().commit(); // Concleta a transação no banco de dados;
+
+      entityManager.close();
+      entityManagerFactory.close();
     }
 }
