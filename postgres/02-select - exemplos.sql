@@ -100,3 +100,32 @@ SELECT nome, email FROM cliente
 
 -- SUM
   SELECT SUM(valor) FROM cliente_transacoes;
+
+
+-- SELECT com PAGINAÇÃO
+
+/*
+Sintaxe
+SELECT  
+  tabela.campo1, tabela.campo2, tabela.campo3
+FROM tabela  
+  LIMIT {quantidade maxima de registros } 
+  OFFSET {quantidade maxima de registros }  * ( {numero da pagina} - 1);
+*/
+
+-- Exemplo 1
+SELECT  
+  cliente.numero, cliente.nome, cliente.data_criacao
+FROM cliente  
+  LIMIT 2 
+  OFFSET 2 * (3 - 1);
+
+
+-- Exemplo 2 - Com ordernação
+SELECT  
+  cliente.numero, cliente.nome, cliente.data_criacao
+FROM cliente 
+  ORDER BY cliente.numero DESC 
+  LIMIT 2 
+  OFFSET 2 * (3 - 1);
+  
