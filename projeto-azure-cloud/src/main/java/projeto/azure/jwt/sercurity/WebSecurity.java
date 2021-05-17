@@ -35,11 +35,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
       .permitAll()
       .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL)
       .permitAll()
-      .anyRequest().authenticated();
-      //.and()
-      //.addFilter(new JWTAuthenticationFilter(authenticationManager()))
+      .anyRequest().authenticated()
+      .and()
+      .addFilter(new JWTAuthenticationFilter(authenticationManager()))
       //.addFilter(new JWTAuthorizationFilter(authenticationManager()))
-      //.sessionManagement().SessionCreationPolicy(SessionCreationPolicy.STATELESS);
+      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
   
   }
 
