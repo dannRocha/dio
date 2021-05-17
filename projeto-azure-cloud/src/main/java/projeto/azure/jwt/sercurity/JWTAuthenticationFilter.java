@@ -10,8 +10,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.auth0.jwt.*;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.algorithms.Algorithm;
-//import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
